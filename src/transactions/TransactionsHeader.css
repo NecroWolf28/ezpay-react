@@ -1,5 +1,4 @@
 ul {
-    padding: 0; /* Remove default padding */
     margin: 0; /* Remove default margin */
     background-color: #C8A2C8; /* Lilac background */
     /*border-radius: 8px; !* Rounded corners *!*/
@@ -20,7 +19,8 @@ ul li a {
     color: #4B0082; /* Text color (indigo-like for contrast) */
     border: 1px solid #4B0082; /* Border to match the text */
     border-radius: 5px; /* Rounded corners for buttons */
-    font-family: Arial, sans-serif; /* Clean font */
+    font-weight: bold;
+    /*font-family: Consolas, serif; !* Clean font *!*/
     font-size: 14px; /* Adjust font size */
     transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
 }
