@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { TransactionsHeader } from './TransactionsHeader';
+import React, {useEffect, useState} from 'react';
 
 function TransactionsMenu() {
     const [transactions, setTransactions] = useState([]);
@@ -14,7 +13,6 @@ function TransactionsMenu() {
 
     return (
         <>
-            <TransactionsHeader/>
             <h1 style={{backgroundColor: '#282c34', color: 'white', padding: '20px', margin: '0'}}>
                 Navigate to the above pages by clicking on the buttons
             </h1>
