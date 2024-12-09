@@ -7,6 +7,7 @@ import Settings from './pages/settings/Settings';
 import {useEffect, useState} from 'react';
 import UserPage from "./pages/user/UserPage";
 import UserEditPage from "./pages/user/UserEditPage";
+import TransactionHistory from "./pages/transactions/TransactionHistory";
 
 function App() {
     const [darkMode, setDarkMode] = useState(
@@ -29,6 +30,7 @@ function App() {
                 <Routes>
                     <Route path="/transactions" element={<TransactionsMenu/>}/>
                     <Route path="/transactions/about" element={<TransactionsAbout/>}/>
+                    <Route path="/transactions/history" element={<TransactionHistory/>}/>
                     <Route path="/settings" element={<Settings toggleDarkMode={toggleDarkMode} darkMode={darkMode}/>}/>
                     <Route path="/user" element={<UserPage toggleDarkMode={toggleDarkMode} darkMode={darkMode}/>}/>
                     <Route path="/user/edit"

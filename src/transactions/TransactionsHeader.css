@@ -3,6 +3,8 @@ ul {
     background-color: #C8A2C8; /* Lilac background */
     /*border-radius: 8px; !* Rounded corners *!*/
     padding: 10px; /* Add some spacing */
+    display: flex;
+    justify-content: center;
 }
 
 ul li {

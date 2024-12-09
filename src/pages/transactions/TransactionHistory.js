@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { TransactionsHeader } from './TransactionsHeader';
+import {TransactionsHeader} from "../../transactions/TransactionsHeader";
 
 function TransactionHistory() {
     const [transactions, setTransactions] = useState([]);
@@ -53,7 +53,7 @@ function TransactionHistory() {
         <>
             <TransactionsHeader />
 
-            <div style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', margin: '0' }}>
+            <div style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', margin: '0', display: "flex", flexDirection: 'column', alignItems: 'center' }}>
                 <h1>Transaction History</h1>
 
                 <div>
