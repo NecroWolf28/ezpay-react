@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import './Header.css';
 import userIcon from '../assets/header/user.png';
 import paymentIcon from '../assets/header/payment.png';
@@ -9,7 +9,7 @@ const Header = () => {
     const [currentTab, setCurrentTab] = useState(window.location.pathname);
 
     useEffect(() => {
-        const handleLocationChange = () => setCurrentTab(window.location.pathname);
+        const handleLocationChange = () => setCurrentTab("/" + window.location.pathname.split('/')[1]);
         window.addEventListener('popstate', handleLocationChange);
         return () => window.removeEventListener('popstate', handleLocationChange);
     }, []);
@@ -22,7 +22,7 @@ const Header = () => {
                     className={`nav-item ${currentTab === '/user' ? 'active-tab' : ''}`}
                 >
           <span className="nav-icon">
-            <img src={userIcon} alt="User" />
+            <img src={userIcon} alt="User"/>
           </span>
                     <span className="nav-text">User</span>
                 </a>
@@ -31,7 +31,7 @@ const Header = () => {
                     className={`nav-item ${currentTab === '/payment' ? 'active-tab' : ''}`}
                 >
           <span className="nav-icon">
-            <img src={paymentIcon} alt="Payment" />
+            <img src={paymentIcon} alt="Payment"/>
           </span>
                     <span className="nav-text">Payment</span>
                 </a>
@@ -42,7 +42,7 @@ const Header = () => {
                     }`}
                 >
           <span className="nav-icon">
-            <img src={transactionIcon} alt="Transactions" />
+            <img src={transactionIcon} alt="Transactions"/>
           </span>
                     <span className="nav-text">Transactions</span>
                 </a>
@@ -51,7 +51,7 @@ const Header = () => {
                     className={`nav-item ${currentTab === '/settings' ? 'active-tab' : ''}`}
                 >
           <span className="nav-icon">
-            <img src={settingsIcon} alt="Settings" />
+            <img src={settingsIcon} alt="Settings"/>
           </span>
                     <span className="nav-text">Settings</span>
                 </a>
