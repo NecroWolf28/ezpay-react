@@ -79,6 +79,44 @@ function TransactionHistory() {
             .catch(error => console.error("Error updating transaction:", error));
     };
 
+    const handleCancel = (transaction) => {
+        // Check if the transaction is either 'initiated' or 'processing'
+        if (transaction.status === 'Initiated' || transaction.status === 'Processing') {
+            // Send a request to the backend to update the transaction
+            fetch(`http://localhost:8081/api/transactions/cancel/${transaction.transactionId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...transaction,   // Keep all current transaction fields
+                    status: 'Canceled' // Reset the status to 'Canceled'
+                }),
+            })
+                .then((response) => response.json())
+                .then((updatedTransaction) => {
+                    // Update the local state with the updated transaction
+                    setTransactions(prevTransactions =>
+                        prevTransactions.map(t =>
+                            t.transactionId === updatedTransaction.transactionId ? updatedTransaction : t
+                        )
+                    );
+                    setFilteredTransactions(prevTransactions =>
+                        prevTransactions.map(t =>
+                            t.transactionId === updatedTransaction.transactionId ? updatedTransaction : t
+                        )
+                    );
+                }).then(() => {
+                // After editing the transaction, re-fetch the list
+                applyFilters();
+            })
+                .catch((error) => {
+                    console.error("Error canceling transaction:", error);
+                });
+        }
+    };
+
+
     return (
         <>
             <TransactionsHeader />
@@ -180,6 +218,22 @@ function TransactionHistory() {
                                             Edit
                                         </button>
                                     )}
+                                    {(transaction.status === 'Initiated' || transaction.status === 'Processing') && (
+                                        <button
+                                            style={{
+                                                padding: '5px 10px',
+                                                backgroundColor: 'lightcoral',
+                                                color: 'black',
+                                                border: 'none',
+                                                borderRadius: '5px',
+                                                cursor: 'pointer',
+                                                marginLeft: '10px'
+                                            }}
+                                            onClick={() => handleCancel(transaction)}
+                                        >
+                                            Cancel
+                                        </button>
+                                    )}
                                 </td>
                             </tr>
                         ))}
@@ -188,7 +242,6 @@ function TransactionHistory() {
                 ) : (
                     <p><strong>No transactions found for the selected filters.</strong></p>
                 )}
-
 
                 {/* Edit Transaction Form */}
                 {editTransaction && (
