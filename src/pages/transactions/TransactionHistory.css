@@ -1,0 +1,22 @@
+.details-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: lightcoral;
+    color: black;
+    border-radius: 10px;
+    opacity: 0; /* Initially hidden */
+    transform: scale(0.95); /* Shrink effect */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+.details-container.visible {
+    opacity: 1; /* Fully visible */
+    transform: scale(1); /* Normal size */
+}
+
+.details-container.hidden {
+    opacity: 0; /* Fully hidden */
+    transform: scale(0.95); /* Shrink slightly */
+    pointer-events: none; /* Prevent interaction when hidden */
+}

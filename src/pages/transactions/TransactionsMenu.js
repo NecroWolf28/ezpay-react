@@ -1,4 +1,4 @@
-import {TransactionsHeader} from "../../transactions/TransactionsHeader";
+import {TransactionsHeader} from "../../components/TransactionsHeader";
 
 function TransactionsMenu() {
     return (<>
