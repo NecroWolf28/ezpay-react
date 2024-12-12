@@ -116,7 +116,7 @@ function TransactionHistory() {
     };
 
     return (
-        <div className="transactions-history-page">
+        <div className="transactions-page">
             {confirmationMessage && (
                 <ConfirmationDialog
                     message={confirmationMessage}

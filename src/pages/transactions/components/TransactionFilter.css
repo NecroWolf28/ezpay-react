@@ -1,37 +1,5 @@
-.filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 20px;
-    justify-content: center;
-    background-color: var(--card-color);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.filter-label {
-    padding: 8px;
-    font-size: 14px;
-    font-weight: bold;
-    color: var(--text-color);
-}
-
-.filter-input {
-    padding: 8px 12px;
-    font-size: 14px;
-    border: 1px solid var(--input-border-color);
-    border-radius: 4px;
-    background-color: var(--input-bg-color);
-    color: var(--text-color);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    font-weight: bold;
-}
-
-.filter-input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 6px var(--primary-color);
-    outline: none;
+.transaction-filter {
+    align-self: center;
+    width: 96%;
+    max-width: 1200px;
 }

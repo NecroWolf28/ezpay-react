@@ -1,15 +1,3 @@
-.transactions-card {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
-    background-color: var(--card-color);
-    color: var(--text-color);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 .transactions-table {
     width: 100%;
     border-collapse: collapse;
@@ -33,21 +21,8 @@
 }
 
 .transaction-actions {
-    display: flex;
-    gap: 10px;
     justify-content: center;
     min-height: 30px;
-    background-color: transparent;
-}
-
-.transaction-actions:empty {
-    display: block;
-    height: 0;
-}
-
-.edit-button,
-.cancel-button {
-    flex: 1;
 }
 
 .no-transactions-message {

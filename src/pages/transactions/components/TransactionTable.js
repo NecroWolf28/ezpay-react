@@ -1,10 +1,11 @@
 import React from 'react';
 import Button from '../../../components/Button';
 import './TransactionTable.css';
+import Card from "../../../components/Card";
 
-function TransactionTable({ transactions, onEdit, onCancel }) {
+function TransactionTable({transactions, onEdit, onCancel}) {
     return (
-        <div className="transactions-card">
+        <Card>
             {transactions.length > 0 ? (
                 <table className="transactions-table">
                     <thead>
@@ -27,18 +28,10 @@ function TransactionTable({ transactions, onEdit, onCancel }) {
                             <td>{transaction.status}</td>
                             <td className="transaction-actions">
                                 {(transaction.status === 'Initiated' || transaction.status === 'Processing') && (
-                                    <>
-                                        <Button
-                                            label="Edit"
-                                            type="confirm"
-                                            onClick={() => onEdit(transaction)}
-                                        />
-                                        <Button
-                                            label="Cancel"
-                                            type="cancel"
-                                            onClick={() => onCancel(transaction)}
-                                        />
-                                    </>
+                                    <div className="buttons">
+                                        <Button label="Edit" type="confirm" onClick={() => onEdit(transaction)}/>
+                                        <Button label="Cancel" type="cancel" onClick={() => onCancel(transaction)}/>
+                                    </div>
                                 )}
                             </td>
                         </tr>
@@ -50,7 +43,7 @@ function TransactionTable({ transactions, onEdit, onCancel }) {
                     No transactions found for the selected filters.
                 </p>
             )}
-        </div>
+        </Card>
     );
 }
 

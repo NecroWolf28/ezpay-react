@@ -1,4 +1,4 @@
-// import "./App.css";
+import "./App.css";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Header from './components/Header';
 import Settings from './pages/settings/Settings';
@@ -23,7 +23,7 @@ function App() {
     };
 
     return (
-        <div className="App" style={{backgroundColor: '#282c34'}}>
+        <div className="App">
             <BrowserRouter>
                 <Header darkMode={darkMode}/>
                 <Routes>

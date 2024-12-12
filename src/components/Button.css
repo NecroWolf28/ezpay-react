@@ -8,6 +8,7 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-align: center;
     color: var(--text-color);
+    flex: 1;
 }
 
 .button:disabled {
@@ -42,4 +43,9 @@
 .button.cancel:active {
     background-color: var(--cancel-color-active);
     transform: translateY(0);
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
 }

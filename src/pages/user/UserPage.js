@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 import ConfirmationDialog from '../../components/ConfirmationDialog';
 import Button from '../../components/Button';
+import Card from '../../components/Card';
 import './UserPage.css';
 
 function UserPage() {
@@ -48,27 +49,24 @@ function UserPage() {
         return <div className="page-container error-container">Error: {error}</div>;
     }
 
-    return (
-        <div className="user-page">
-            {confirmation && (
-                <ConfirmationDialog
-                    message="Information updated successfully!"
-                    onDismiss={handleDismiss}
-                />
-            )}
-            <h1 className="page-title">User Information</h1>
-            <div className="card">
-                <div className="card-content">
-                    <span><strong>Name:</strong> {user.name}</span>
-                    <span><strong>Username:</strong> {user.username}</span>
-                    <span><strong>Email:</strong> {user.email}</span>
-                </div>
-                <Link to="/user/edit">
-                    <Button label="Edit" type="confirm" />
-                </Link>
-            </div>
-        </div>
-    );
+    return (<div className="user-page">
+        {confirmation && (<ConfirmationDialog
+            message="Information updated successfully!"
+            onDismiss={handleDismiss}
+        />)}
+        <h1 className="page-title">User Information</h1>
+        <Card>
+            <label>Name:</label>
+            <input value={user.name} disabled={true}></input>
+            <label>Username:</label>
+            <input value={user.username} disabled={true}></input>
+            <label>Email:</label>
+            <input value={user.email} disabled={true}></input>
+            <Link to="/user/edit">
+                <Button label="Edit" type="confirm"/>
+            </Link>
+        </Card>
+    </div>);
 }
 
 export default UserPage;

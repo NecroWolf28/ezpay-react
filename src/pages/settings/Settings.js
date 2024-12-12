@@ -2,7 +2,7 @@ import React from 'react';
 import './Settings.css';
 
 const Settings = ({toggleDarkMode, darkMode}) => (
-    <div className="settings-container">
+    <div className="settings-page">
         <h1 className="settings-title">Settings</h1>
         <div className="settings-item">
             <label className="settings-label">Dark Mode</label>

@@ -2,11 +2,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--inactive-tab-color);
-    color: var(--text-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     padding: 0;
     height: 60px;
+    background-color: var(--inactive-tab-color);
+    color: var(--text-color);
 }
 
 .logo {
@@ -42,7 +42,6 @@
     padding: 0 20px;
     height: 100%;
     background-color: var(--inactive-tab-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-item.active-tab {
@@ -70,7 +69,7 @@ body.dark-mode .nav-icon img {
     filter: invert(1) brightness(2);
 }
 
-@media (max-width: 768px) {
+@media (aspect-ratio < 1) {
     .nav-icon {
         display: block;
     }
