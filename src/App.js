@@ -7,8 +7,9 @@ import User from './page/user/User';
 import Edit from './components/user/Edit';
 import Transaction from './page/transactions/Transaction';
 import Settings from './page/settings/Settings';
-import Login from "./page/login/Login";
+import Login from "./page/auth/Login";
 import PrivateRoute from "./PrivateRoute";
+import Recover from "./page/auth/Recover";
 
 function App() {
     const [darkMode, setDarkMode] = useState(
@@ -32,6 +33,9 @@ function App() {
                     <Routes>
                         <Route path="/login" element={
                             <Login toggleDarkMode={toggleDarkMode} darkMode={darkMode}/>}
+                        />
+                        <Route path="/recover" element={
+                            <Recover toggleDarkMode={toggleDarkMode} darkMode={darkMode}/>}
                         />
                         <Route path="/user" element={<PrivateRoute>
                             <User toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}

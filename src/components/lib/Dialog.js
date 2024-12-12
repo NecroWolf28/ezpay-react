@@ -5,7 +5,7 @@ import Card from "./Card";
 function Dialog({message, onDismiss}) {
     return (
         <Card>
-            <div className="confirm-dialog">
+            <div className="dialog">
                 {message}
                 <button className="dismiss-button" onClick={onDismiss}>&times;</button>
             </div>
