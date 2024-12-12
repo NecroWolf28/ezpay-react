@@ -4,9 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f11cca3c-031a-47ef-b47f-1c24c0cbc808" name="Changes" comment="Add edit transaction feature">
+    <list default="true" id="f11cca3c-031a-47ef-b47f-1c24c0cbc808" name="Changes" comment="Add cancel transaction feature frontend support">
+      <change afterPath="$PROJECT_DIR$/src/assets/EZPAY Logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/transactions/components/EditTransactionForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/transactions/components/FilterPanel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/transactions/components/TransactionsFilter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/transactions/components/TransactionsTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/transactions/TransactionHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/transactions/TransactionHistory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TransactionsHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TransactionsHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/transactions/TransactionHistory.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/transactions/pages/TransactionHistory.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/transactions/TransactionHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/transactions/pages/TransactionHistory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/transactions/TransactionsAbout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/transactions/TransactionsMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/transactions/pages/TransactionsMenu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/transactions/TransactionsMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/transactions/pages/TransactionsMenu.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -41,6 +53,9 @@
     &quot;accountId&quot;: &quot;24aeb1f2-ad4f-4436-b067-dc42a80210de&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -49,24 +64,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.start.executor": "Run",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yewme\WebstormProjects\ezpay-react\src\assets" />
+      <recent name="C:\Users\yewme\WebstormProjects\ezpay-react\src\pages\transactions\pages" />
       <recent name="C:\Users\yewme\WebstormProjects\ezpay-react\src\components" />
       <recent name="C:\Users\yewme\WebstormProjects\ezpay-react" />
     </key>
@@ -100,7 +117,8 @@
       <updated>1733374570684</updated>
       <workItem from="1733374571759" duration="2073000" />
       <workItem from="1733391367998" duration="6612000" />
-      <workItem from="1733813626327" duration="7860000" />
+      <workItem from="1733813626327" duration="8888000" />
+      <workItem from="1733972166739" duration="3965000" />
     </task>
     <task id="LOCAL-00001" summary="Setup base directories">
       <option name="closed" value="true" />
@@ -118,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733818837888</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add cancel transaction feature frontend support">
+      <option name="closed" value="true" />
+      <created>1733836648564</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733836648564</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,7 +161,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="ym" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -151,6 +177,7 @@
     <MESSAGE value="Setup base directories" />
     <MESSAGE value="Add basic Home page and Transaction Menu page" />
     <MESSAGE value="Add edit transaction feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add edit transaction feature" />
+    <MESSAGE value="Add cancel transaction feature frontend support" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add cancel transaction feature frontend support" />
   </component>
 </project>
