@@ -1,8 +1,8 @@
 import React from 'react';
-import './ConfirmationDialog.css';
+import './Dialog.css';
 import Card from "./Card";
 
-function ConfirmationDialog({message, onDismiss}) {
+function Dialog({message, onDismiss}) {
     return (
         <Card>
             <div className="confirm-dialog">
@@ -13,4 +13,4 @@ function ConfirmationDialog({message, onDismiss}) {
     );
 }
 
-export default ConfirmationDialog;
+export default Dialog;

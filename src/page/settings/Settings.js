@@ -1,6 +1,6 @@
 import React from 'react';
 import './Settings.css';
-import Card from '../../components/Card';
+import Card from '../../components/lib/Card';
 
 const Settings = ({ toggleDarkMode, darkMode }) => (
     <div className="settings-page">

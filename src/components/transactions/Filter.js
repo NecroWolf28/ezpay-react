@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import Button from '../../../components/Button';
-import './TransactionFilter.css';
-import Card from "../../../components/Card";
+import Button from '../lib/Button';
+import './Filter.css';
+import Card from "../lib/Card";
 
-function TransactionFilter({filters, onFilterChange, onApplyFilters, onClearFilters, uniqueTypes, uniqueStatuses}) {
+function Filter({filters, onFilterChange, onApplyFilters, onClearFilters, uniqueTypes, uniqueStatuses}) {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleCard = () => {
@@ -69,4 +69,4 @@ function TransactionFilter({filters, onFilterChange, onApplyFilters, onClearFilt
     );
 }
 
-export default TransactionFilter;
+export default Filter;

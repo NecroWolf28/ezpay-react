@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import EditTransactionForm from '../components/EditTransactionForm';
-import TransactionTable from '../components/TransactionTable';
-import TransactionFilter from '../components/TransactionFilter';
-import ConfirmationDialog from '../../../components/ConfirmationDialog';
-import './TransactionHistory.css';
+import Edit from '../../components/transactions/Edit';
+import Table from '../../components/transactions/Table';
+import Filter from '../../components/transactions/Filter';
+import Dialog from '../../components/lib/Dialog';
+import './Transaction.css';
 
-function TransactionHistory() {
+function Transaction() {
     const [transactions, setTransactions] = useState([]);
     const [filteredTransactions, setFilteredTransactions] = useState([]);
     const [editTransaction, setEditTransaction] = useState(null);
@@ -118,14 +118,14 @@ function TransactionHistory() {
     return (
         <div className="transactions-page">
             {confirmationMessage && (
-                <ConfirmationDialog
+                <Dialog
                     message={confirmationMessage}
                     onDismiss={handleDismissConfirmation}
                 />
             )}
             {!editTransaction && <h1 className="page-title">Transaction History</h1>}
             {!editTransaction && (
-                <TransactionFilter
+                <Filter
                     filters={filters}
                     onFilterChange={handleFilterChange}
                     onApplyFilters={applyFilters}
@@ -135,7 +135,7 @@ function TransactionHistory() {
                 />
             )}
             {editTransaction ? (
-                <EditTransactionForm
+                <Edit
                     transaction={editTransaction}
                     onChange={(e) =>
                         setEditTransaction({...editTransaction, [e.target.name]: e.target.value})
@@ -144,7 +144,7 @@ function TransactionHistory() {
                     onCancel={handleCancelEdit}
                 />
             ) : (
-                <TransactionTable
+                <Table
                     transactions={filteredTransactions}
                     onEdit={handleEdit}
                     onCancel={handleCancel}
@@ -154,4 +154,4 @@ function TransactionHistory() {
     );
 }
 
-export default TransactionHistory;
+export default Transaction;

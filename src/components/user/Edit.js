@@ -1,11 +1,11 @@
 import React, {useContext, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {UserContext} from '../../contexts/UserContext';
-import Button from '../../components/Button';
-import Card from '../../components/Card';
-import './UserEditPage.css';
+import Button from '../lib/Button';
+import Card from '../lib/Card';
+import './Edit.css';
 
-function UserEditPage() {
+function Edit() {
     const {user, login} = useContext(UserContext); // Using UserContext to get and update the user
     const [formData, setFormData] = useState({
         name: user.name,
@@ -98,4 +98,4 @@ function UserEditPage() {
     );
 }
 
-export default UserEditPage;
+export default Edit;

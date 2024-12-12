@@ -2,12 +2,12 @@ import "./App.css";
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import {UserProvider} from './contexts/UserContext';
-import Header from './components/Header';
-import UserPage from './pages/user/UserPage';
-import UserEditPage from './pages/user/UserEditPage';
-import TransactionHistory from './pages/transactions/pages/TransactionHistory';
-import Settings from './pages/settings/Settings';
-import LoginPage from "./pages/login/LoginPage";
+import Header from './components/lib/Header';
+import User from './page/user/User';
+import Edit from './components/user/Edit';
+import Transaction from './page/transactions/Transaction';
+import Settings from './page/settings/Settings';
+import Login from "./page/login/Login";
 import PrivateRoute from "./PrivateRoute";
 
 function App() {
@@ -31,16 +31,16 @@ function App() {
                     <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode}/>
                     <Routes>
                         <Route path="/login" element={
-                            <LoginPage toggleDarkMode={toggleDarkMode} darkMode={darkMode}/>}
+                            <Login toggleDarkMode={toggleDarkMode} darkMode={darkMode}/>}
                         />
                         <Route path="/user" element={<PrivateRoute>
-                            <UserPage toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}
+                            <User toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}
                         />
                         <Route path="/user/edit" element={<PrivateRoute>
-                            <UserEditPage toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}
+                            <Edit toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}
                         />
                         <Route path="/transactions" element={<PrivateRoute>
-                            <TransactionHistory toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}
+                            <Transaction toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}
                         />
                         <Route path="/settings" element={<PrivateRoute>
                             <Settings toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}

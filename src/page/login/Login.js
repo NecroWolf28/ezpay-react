@@ -1,11 +1,11 @@
 import React, {useContext, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {UserContext} from '../../contexts/UserContext';
-import Card from '../../components/Card';
-import './LoginPage.css';
-import Button from "../../components/Button";
+import Card from '../../components/lib/Card';
+import './Login.css';
+import Button from "../../components/lib/Button";
 
-function LoginPage() {
+function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -60,4 +60,4 @@ function LoginPage() {
     );
 }
 
-export default LoginPage;
+export default Login;

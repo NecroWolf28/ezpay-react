@@ -1,9 +1,9 @@
 import React from 'react';
-import Button from '../../../components/Button';
-import './EditTransactionForm.css';
-import Card from "../../../components/Card";
+import Button from '../lib/Button';
+import './Edit.css';
+import Card from "../lib/Card";
 
-function EditTransactionForm({transaction, onChange, onSubmit, onCancel}) {
+function Edit({transaction, onChange, onSubmit, onCancel}) {
     return (
         <div className="transaction-form">
             <h1 className="page-title">Edit Transaction</h1>
@@ -53,4 +53,4 @@ function EditTransactionForm({transaction, onChange, onSubmit, onCancel}) {
     );
 }
 
-export default EditTransactionForm;
+export default Edit;

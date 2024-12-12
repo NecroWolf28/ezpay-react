@@ -1,12 +1,12 @@
 import React, {useContext} from 'react';
 import {Link} from 'react-router-dom';
 import {UserContext} from '../../contexts/UserContext';
-import ConfirmationDialog from '../../components/ConfirmationDialog';
-import Button from '../../components/Button';
-import Card from '../../components/Card';
-import './UserPage.css';
+import Dialog from '../../components/lib/Dialog';
+import Button from '../../components/lib/Button';
+import Card from '../../components/lib/Card';
+import './User.css';
 
-function UserPage() {
+function User() {
     const {user} = useContext(UserContext);
     const [confirmation, setConfirmation] = React.useState(false);
 
@@ -31,7 +31,7 @@ function UserPage() {
     return (
         <div className="user-page">
             {confirmation && (
-                <ConfirmationDialog message="Information updated successfully!" onDismiss={handleDismiss}/>
+                <Dialog message="Information updated successfully!" onDismiss={handleDismiss}/>
             )}
             <h1 className="page-title">User Information</h1>
             <Card>
@@ -61,4 +61,4 @@ function UserPage() {
     );
 }
 
-export default UserPage;
+export default User;

@@ -1,9 +1,9 @@
 import React from 'react';
-import Button from '../../../components/Button';
-import './TransactionTable.css';
-import Card from "../../../components/Card";
+import Button from '../lib/Button';
+import './Table.css';
+import Card from "../lib/Card";
 
-function TransactionTable({transactions, onEdit, onCancel}) {
+function Table({transactions, onEdit, onCancel}) {
     return (
         <Card>
             {transactions.length > 0 ? (
@@ -47,4 +47,4 @@ function TransactionTable({transactions, onEdit, onCancel}) {
     );
 }
 
-export default TransactionTable;
+export default Table;

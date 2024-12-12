@@ -1,13 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {UserContext} from '../contexts/UserContext';
+import {UserContext} from '../../contexts/UserContext';
 import {useNavigate} from 'react-router-dom';
 import './Header.css';
-import logoIcon from '../assets/logo.png';
-import userIcon from '../assets/header/user.png';
-import paymentIcon from '../assets/header/payment.png';
-import transactionIcon from '../assets/header/transaction.png';
-import settingsIcon from '../assets/header/settings.png';
-import logoutIcon from '../assets/header/logout.png';
+import logoIcon from '../../assets/logo.png';
+import userIcon from '../../assets/header/user.png';
+import paymentIcon from '../../assets/header/payment.png';
+import transactionIcon from '../../assets/header/transaction.png';
+import settingsIcon from '../../assets/header/settings.png';
+import logoutIcon from '../../assets/header/logout.png';
 
 const Header = () => {
     const {user, logout} = useContext(UserContext);
