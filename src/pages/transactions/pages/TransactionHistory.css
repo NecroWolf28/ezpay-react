@@ -1,22 +1,15 @@
-.details-container {
-    width: 80%;
-    margin: 20px auto;
+.transactions-history-page {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     padding: 20px;
-    background-color: lightcoral;
-    color: black;
-    border-radius: 10px;
-    opacity: 0; /* Initially hidden */
-    transform: scale(0.95); /* Shrink effect */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+    gap: 20px;
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease;
 }
 
-.details-container.visible {
-    opacity: 1; /* Fully visible */
-    transform: scale(1); /* Normal size */
-}
-
-.details-container.hidden {
-    opacity: 0; /* Fully hidden */
-    transform: scale(0.95); /* Shrink slightly */
-    pointer-events: none; /* Prevent interaction when hidden */
+.edit-transaction-card, .filter-bar, .transactions-table-container, .confirmation-box {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
 }

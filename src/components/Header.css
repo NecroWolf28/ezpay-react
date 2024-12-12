@@ -1,13 +1,34 @@
 .header {
     display: flex;
-    justify-content: center;
-    background-color: var(--background-color);
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--inactive-tab-color);
     color: var(--text-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 0;
+    height: 60px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 20px;
+    height: 100%;
+}
+
+.logo img {
+    height: auto;
+    max-height: 48px;
+    max-width: 100%;
+    object-fit: contain;
+    margin-right: 10px;
 }
 
 .header-nav {
     display: flex;
-    width: 100%;
+    margin-left: auto;
+    height: 100%;
 }
 
 .nav-item {
@@ -16,11 +37,10 @@
     font-size: 16px;
     font-weight: 500;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px 0;
-    flex: 1;
+    padding: 0 20px;
+    height: 100%;
     background-color: var(--inactive-tab-color);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -29,14 +49,17 @@
     background-color: var(--background-color);
 }
 
-.nav-item:hover {
-    background-color: var(--hover-tab-color);
+.nav-icon {
+    display: none;
 }
 
-.nav-icon img {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 3px;
+.nav-text {
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 body.light-mode .nav-icon img {
@@ -47,30 +70,18 @@ body.dark-mode .nav-icon img {
     filter: invert(1) brightness(2);
 }
 
-.nav-text {
-    font-size: 12px;
-    text-align: center;
-}
-
 @media (max-width: 768px) {
+    .nav-icon {
+        display: block;
+    }
+
     .nav-icon img {
-        width: 30px;
-        height: 30px;
-        margin-bottom: 2px;
+        width: 24px;
+        height: 24px;
+        margin-bottom: 3px;
     }
 
     .nav-text {
-        display: block;
-        font-size: 10px;
+        display: none;
     }
-}
-
-body.light-mode .nav-item {
-    --inactive-tab-color: #e0e0e0;
-    --hover-tab-color: #d6d6d6;
-}
-
-body.dark-mode .nav-item {
-    --inactive-tab-color: #394149;
-    --hover-tab-color: #4a5561;
 }

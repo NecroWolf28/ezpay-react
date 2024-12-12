@@ -1,4 +1,4 @@
-.user-edit-page {
+.transaction-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,7 +8,7 @@
     transition: background-color 0.3s ease;
 }
 
-.edit-user-card {
+.edit-transaction-card {
     background-color: var(--card-color);
     color: var(--text-color);
     padding: 20px;
@@ -22,14 +22,14 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.edit-user-card label {
+.edit-transaction-card label {
     display: flex;
     flex-direction: column;
     font-size: 14px;
     color: var(--text-color);
 }
 
-.edit-user-card input {
+.edit-transaction-card input {
     padding: 10px;
     font-size: 14px;
     border: 2px solid var(--input-border-color);
@@ -41,7 +41,7 @@
     margin-bottom: 15px;
 }
 
-.edit-user-card input:focus {
+.edit-transaction-card input:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 8px var(--primary-color);
     background-color: var(--input-bg-color-focused);
@@ -51,15 +51,8 @@
     flex: 1;
 }
 
-.button-group {
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
-}
-
 @media (max-width: 768px) {
     .button-group button {
         width: 100%;
     }
 }
-

@@ -1,44 +1,32 @@
 import React from 'react';
+import Button from '../../../components/Button';
+import './EditTransactionForm.css';
 
-function EditTransactionForm({ transaction, onChange, onSubmit }) {
+function EditTransactionForm({ transaction, onChange, onSubmit, onCancel }) {
     return (
-        <div style={{
-            width: '80%',
-            marginTop: '20px',
-            padding: '20px',
-            backgroundColor: 'lightcoral',
-            color: 'black',
-            borderRadius: '10px',
-            marginLeft: "auto",
-            marginRight: "auto",
-            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-        }}>
-            <h2>Edit Transaction</h2>
-            <form>
+        <div className="transaction-form">
+            <h1 className="page-title">Edit Transaction</h1>
+            <div className="edit-transaction-card">
                 <label>
                     Amount:
                     <input
                         type="number"
                         name="amount"
-                        value={transaction.amount}
+                        value={transaction.amount || ''}
                         onChange={onChange}
-                        required
-                        style={{ marginBottom: '10px' }}
+                        placeholder="Enter the amount"
                     />
                 </label>
-                <br />
                 <label>
                     Recipient:
                     <input
                         type="text"
                         name="recipientSender"
-                        value={transaction.recipientSender}
+                        value={transaction.recipientSender || ''}
                         onChange={onChange}
-                        required
-                        style={{ marginBottom: '10px' }}
+                        placeholder="Enter the recipient"
                     />
                 </label>
-                <br />
                 <label>
                     Description:
                     <input
@@ -46,10 +34,9 @@ function EditTransactionForm({ transaction, onChange, onSubmit }) {
                         name="description"
                         value={transaction.description || ''}
                         onChange={onChange}
-                        style={{ marginBottom: '10px' }}
+                        placeholder="Enter the description"
                     />
                 </label>
-                <br />
                 <label>
                     Type:
                     <input
@@ -57,25 +44,14 @@ function EditTransactionForm({ transaction, onChange, onSubmit }) {
                         name="type"
                         value={transaction.type || ''}
                         onChange={onChange}
-                        style={{ marginBottom: '10px' }}
+                        placeholder="Enter the transaction type"
                     />
                 </label>
-                <br />
-                <button
-                    type="button"
-                    onClick={onSubmit}
-                    style={{
-                        marginTop: '10px',
-                        padding: '10px 20px',
-                        backgroundColor: '#61DAFB',
-                        color: 'black',
-                        border: 'none',
-                        borderRadius: '5px',
-                    }}
-                >
-                    Submit Changes
-                </button>
-            </form>
+                <div className="button-group">
+                    <Button label="Submit" type="confirm" onClick={onSubmit} />
+                    <Button label="Cancel" type="cancel" onClick={onCancel} />
+                </div>
+            </div>
         </div>
     );
 }
