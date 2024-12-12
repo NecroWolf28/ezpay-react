@@ -1,6 +1,6 @@
 import "./App.css";
 import React, {useEffect, useState} from 'react';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import {UserProvider} from './contexts/UserContext';
 import Header from './components/Header';
 import UserPage from './pages/user/UserPage';
@@ -45,6 +45,7 @@ function App() {
                         <Route path="/settings" element={<PrivateRoute>
                             <Settings toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}
                         />
+                        <Route path="*" element={<Navigate to="/user" replace/>}/>
                     </Routes>
                 </BrowserRouter>
 
