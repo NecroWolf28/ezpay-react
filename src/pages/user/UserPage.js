@@ -1,6 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import ConfirmationDialog from '../../components/ConfirmationDialog';
+import Button from '../../components/Button';
 import './UserPage.css';
-import {Link} from "react-router-dom";
 
 function UserPage() {
     const [user, setUser] = useState(null);
@@ -47,16 +49,13 @@ function UserPage() {
     }
 
     return (
-        <div className="page-container">
+        <div className="user-page">
             {confirmation && (
-                <div className="confirmation-box">
-                    Information updated successfully!
-                    <button className="dismiss-button" onClick={handleDismiss}>
-                        &times;
-                    </button>
-                </div>
+                <ConfirmationDialog
+                    message="Information updated successfully!"
+                    onDismiss={handleDismiss}
+                />
             )}
-
             <h1 className="page-title">User Information</h1>
             <div className="card">
                 <div className="card-content">
@@ -64,8 +63,8 @@ function UserPage() {
                     <span><strong>Username:</strong> {user.username}</span>
                     <span><strong>Email:</strong> {user.email}</span>
                 </div>
-                <Link to={"/user/edit"}>
-                    <button className="edit-button">Edit</button>
+                <Link to="/user/edit">
+                    <Button label="Edit" type="confirm" />
                 </Link>
             </div>
         </div>

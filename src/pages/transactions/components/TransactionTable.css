@@ -1,0 +1,58 @@
+.transactions-card {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: var(--card-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.transactions-table th {
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid var(--input-border-color);
+}
+
+.transaction-row td {
+    padding: 12px;
+    border-bottom: 1px solid var(--input-border-color);
+    background-color: var(--card-color);
+    text-align: left;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    min-height: 30px;
+    background-color: transparent;
+}
+
+.transaction-actions:empty {
+    display: block;
+    height: 0;
+}
+
+.edit-button,
+.cancel-button {
+    flex: 1;
+}
+
+.no-transactions-message {
+    text-align: center;
+    font-weight: bold;
+    color: var(--text-color);
+    margin: 20px 0;
+}

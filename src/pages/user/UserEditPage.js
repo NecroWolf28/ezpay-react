@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import Button from '../../components/Button';
 import './UserEditPage.css';
 
 function UserEditPage() {
@@ -68,7 +69,7 @@ function UserEditPage() {
     }
 
     return (
-        <div className="page-container">
+        <div className="user-edit-page">
             <h1 className="page-title">Edit User Information</h1>
             <div className="edit-user-card">
                 <label>Name:</label>
@@ -96,8 +97,8 @@ function UserEditPage() {
                     placeholder="Enter your email"
                 />
                 <div className="button-group">
-                    <button className="save-button" onClick={handleSave}>Save</button>
-                    <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+                    <Button label="Save" type="confirm" onClick={handleSave}/>
+                    <Button label="Cancel" type="cancel" onClick={handleCancel}/>
                 </div>
             </div>
         </div>
