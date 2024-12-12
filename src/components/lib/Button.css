@@ -1,0 +1,51 @@
+.button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    color: var(--text-color);
+    flex: 1;
+}
+
+.button:disabled {
+    background-color: var(--inactive-tab-color);
+    color: var(--input-border-color);
+    cursor: not-allowed;
+}
+
+.button.confirm {
+    background-color: var(--primary-color);
+}
+
+.button.confirm:hover {
+    background-color: var(--primary-color-hover);
+    transform: translateY(-2px);
+}
+
+.button.confirm:active {
+    background-color: var(--primary-color-active);
+    transform: translateY(0);
+}
+
+.button.cancel {
+    background-color: var(--cancel-color);
+}
+
+.button.cancel:hover {
+    background-color: var(--cancel-color-hover);
+    transform: translateY(-2px);
+}
+
+.button.cancel:active {
+    background-color: var(--cancel-color-active);
+    transform: translateY(0);
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+}

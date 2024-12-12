@@ -1,0 +1,8 @@
+.transaction-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease;
+}

@@ -1,0 +1,33 @@
+.transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.transactions-table th {
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid var(--input-border-color);
+}
+
+.transaction-row td {
+    padding: 12px;
+    border-bottom: 1px solid var(--input-border-color);
+    background-color: var(--card-color);
+    text-align: left;
+}
+
+.transaction-actions {
+    justify-content: center;
+    min-height: 30px;
+}
+
+.no-transactions-message {
+    text-align: center;
+    font-weight: bold;
+    color: var(--text-color);
+    margin: 20px 0;
+}

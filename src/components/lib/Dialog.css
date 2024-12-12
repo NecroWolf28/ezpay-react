@@ -1,0 +1,18 @@
+.dialog {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    max-width: 1200px;
+    font-size: 16px;
+}
+
+.dismiss-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    margin-left: 10px;
+}

@@ -1,0 +1,88 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 0;
+    height: 60px;
+    background-color: var(--inactive-tab-color);
+    color: var(--text-color);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 20px;
+    height: 100%;
+}
+
+.logo img {
+    height: auto;
+    max-height: 48px;
+    max-width: 100%;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.header-nav {
+    display: flex;
+    margin-left: auto;
+    height: 100%;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    height: 100%;
+    background-color: var(--inactive-tab-color);
+    cursor: pointer;
+    border: transparent;
+}
+
+.nav-item.active-tab {
+    background-color: var(--background-color);
+}
+
+.nav-icon {
+    display: none;
+}
+
+.nav-text {
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+body.light-mode .nav-icon img {
+    filter: none;
+}
+
+body.dark-mode .nav-icon img {
+    filter: invert(1) brightness(2);
+}
+
+@media (aspect-ratio < 1) {
+    .nav-icon {
+        display: block;
+    }
+
+    .nav-icon img {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 3px;
+    }
+
+    .nav-text {
+        display: none;
+    }
+}
