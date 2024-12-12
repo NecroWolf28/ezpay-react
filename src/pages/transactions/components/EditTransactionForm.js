@@ -8,37 +8,41 @@ function EditTransactionForm({transaction, onChange, onSubmit, onCancel}) {
         <div className="transaction-form">
             <h1 className="page-title">Edit Transaction</h1>
             <Card>
-                <label>Amount:</label>
+                <label className="text">Amount:</label>
                 <input
                     type="number"
                     name="amount"
                     value={transaction.amount || ''}
                     onChange={onChange}
                     placeholder="Enter the amount"
+                    className="input"
                 />
-                <label>Recipient:</label>
+                <label className="text">Recipient:</label>
                 <input
                     type="text"
                     name="recipientSender"
                     value={transaction.recipientSender || ''}
                     onChange={onChange}
                     placeholder="Enter the recipient"
+                    className="input"
                 />
-                <label>Description:</label>
+                <label className="text">Description:</label>
                 <input
                     type="text"
                     name="description"
                     value={transaction.description || ''}
                     onChange={onChange}
                     placeholder="Enter the description"
+                    className="input"
                 />
-                <label>Type:</label>
+                <label className="text">Type:</label>
                 <input
                     type="text"
                     name="type"
                     value={transaction.type || ''}
                     onChange={onChange}
                     placeholder="Enter the transaction type"
+                    className="input"
                 />
                 <div className="buttons">
                     <Button label="Submit" type="confirm" onClick={onSubmit}/>

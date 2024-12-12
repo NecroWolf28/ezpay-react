@@ -1,34 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {UserContext} from '../../contexts/UserContext';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
 import './UserEditPage.css';
 
 function UserEditPage() {
-    const [user, setUser] = useState(null);
-    const [formData, setFormData] = useState({});
-    const [loading, setLoading] = useState(true);
+    const {user, login} = useContext(UserContext); // Using UserContext to get and update the user
+    const [formData, setFormData] = useState({
+        name: user.name,
+        username: user.username,
+        email: user.email,
+    });
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        fetch('http://localhost:8081/api/customer/get?id=1')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch user information');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setUser(data);
-                setFormData({name: data.name, username: data.username, email: data.email});
-                setLoading(false);
-            })
-            .catch((err) => {
-                setError(err.message);
-                setLoading(false);
-            });
-    }, []);
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -52,6 +37,10 @@ function UserEditPage() {
                 if (!response.ok) {
                     throw new Error('Failed to update user information');
                 }
+                return response.json();
+            })
+            .then((updatedUser) => {
+                login(updatedUser); // Update the user in UserContext
                 navigate('/user?confirmation=true');
             })
             .catch((err) => setError(err.message));
@@ -61,7 +50,7 @@ function UserEditPage() {
         navigate('/user');
     };
 
-    if (loading) {
+    if (!user) {
         return <div className="page-container">Loading user information...</div>;
     }
 
@@ -73,29 +62,32 @@ function UserEditPage() {
         <div className="user-edit-page">
             <h1 className="page-title">Edit User Information</h1>
             <Card>
-                <label>Name:</label>
+                <label className="text">Name:</label>
                 <input
                     type="text"
                     name="name"
                     value={formData.name || ''}
                     onChange={handleChange}
                     placeholder="Enter your name"
+                    className="input"
                 />
-                <label>Username:</label>
+                <label className="text">Username:</label>
                 <input
                     type="text"
                     name="username"
                     value={formData.username || ''}
                     onChange={handleChange}
                     placeholder="Enter your username"
+                    className="input"
                 />
-                <label>Email:</label>
+                <label className="text">Email:</label>
                 <input
                     type="email"
                     name="email"
                     value={formData.email || ''}
                     onChange={handleChange}
                     placeholder="Enter your email"
+                    className="input"
                 />
                 <div className="buttons">
                     <Button label="Save" type="confirm" onClick={handleSave}/>

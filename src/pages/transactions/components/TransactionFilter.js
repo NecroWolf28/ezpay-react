@@ -15,25 +15,28 @@ function TransactionFilter({filters, onFilterChange, onApplyFilters, onClearFilt
             <Button label={isOpen ? "Hide Filters" : "Show Filters"} type="confirm" onClick={toggleCard}/>
             {isOpen && (
                 <Card>
-                    <label>Start Date:</label>
+                    <label className="text">Start Date:</label>
                     <input
                         type="date"
                         name="startDate"
                         value={filters.startDate}
                         onChange={onFilterChange}
+                        className="input"
                     />
-                    <label>End Date:</label>
+                    <label className="text">End Date:</label>
                     <input
                         type="date"
                         name="endDate"
                         value={filters.endDate}
                         onChange={onFilterChange}
+                        className="input"
                     />
-                    <label>Type:</label>
+                    <label className="text">Type:</label>
                     <select
                         name="type"
                         value={filters.type}
                         onChange={onFilterChange}
+                        className="input"
                     >
                         <option value="">All</option>
                         {uniqueTypes.map((type) => (
@@ -42,11 +45,12 @@ function TransactionFilter({filters, onFilterChange, onApplyFilters, onClearFilt
                             </option>
                         ))}
                     </select>
-                    <label>Status:</label>
+                    <label className="text">Status:</label>
                     <select
                         name="status"
                         value={filters.status}
                         onChange={onFilterChange}
+                        className="input"
                     >
                         <option value="">All</option>
                         {uniqueStatuses.map((status) => (

@@ -4,21 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f11cca3c-031a-47ef-b47f-1c24c0cbc808" name="Changes" comment="Add cancel transaction feature frontend support">
-      <change afterPath="$PROJECT_DIR$/src/assets/EZPAY Logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/transactions/components/EditTransactionForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/transactions/components/FilterPanel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/transactions/components/TransactionsFilter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/transactions/components/TransactionsTable.js" afterDir="false" />
+    <list default="true" id="f11cca3c-031a-47ef-b47f-1c24c0cbc808" name="Changes" comment="Add Login Authentication&#10;Add login page&#10;Add authentication logic&#10;Change user page to fetch user details&#10;Change user edit page to fetch user details">
+      <change afterPath="$PROJECT_DIR$/public/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PrivateRoute.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/header/logout.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/contexts/UserContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/login/LoginPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/login/LoginPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TransactionsHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TransactionsHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/transactions/TransactionHistory.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/transactions/pages/TransactionHistory.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/transactions/TransactionHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/transactions/pages/TransactionHistory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/transactions/TransactionsAbout.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/transactions/TransactionsMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/transactions/pages/TransactionsMenu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/transactions/TransactionsMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/transactions/pages/TransactionsMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/settings/Settings.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/settings/Settings.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/settings/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/settings/Settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/transactions/components/EditTransactionForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/transactions/components/EditTransactionForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/transactions/components/TransactionFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/transactions/components/TransactionFilter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/transactions/pages/TransactionHistory.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/transactions/pages/TransactionHistory.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/user/UserEditPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/UserEditPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/user/UserPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/UserPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,24 +70,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "yukun-dev",
+    "last_opened_file_path": "C:/Users/Xu Yukun/WebstormProjects/ezpay-react/public",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.start.executor": "Run",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.1.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Xu Yukun\WebstormProjects\ezpay-react\public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Xu Yukun\WebstormProjects\ezpay-react\src\assets\header" />
       <recent name="C:\Users\yewme\WebstormProjects\ezpay-react\src\assets" />
       <recent name="C:\Users\yewme\WebstormProjects\ezpay-react\src\pages\transactions\pages" />
       <recent name="C:\Users\yewme\WebstormProjects\ezpay-react\src\components" />
@@ -178,6 +189,19 @@
     <MESSAGE value="Add basic Home page and Transaction Menu page" />
     <MESSAGE value="Add edit transaction feature" />
     <MESSAGE value="Add cancel transaction feature frontend support" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add cancel transaction feature frontend support" />
+    <MESSAGE value="Add Login Authentication&#10;Add login page&#10;Add authentication logic&#10;Change user page to fetch user details&#10;Change user edit page to fetch user details" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Login Authentication&#10;Add login page&#10;Add authentication logic&#10;Change user page to fetch user details&#10;Change user edit page to fetch user details" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/user/UserEditPage.js</url>
+          <line>84</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
