@@ -3,7 +3,26 @@ import Button from '../lib/Button';
 import './Table.css';
 import Card from "../lib/Card";
 
-function Table({transactions, onEdit, onCancel}) {
+function Table({transactions, onViewDetails, onEdit, onCancel}) {
+
+    const renderActions = (transaction) => (
+        <td className="transaction-button-actions">
+            <Button label="View" type="confirm" onClick={() => onViewDetails(transaction)} />
+            {transaction.status !== 'Canceled' ?
+                <>
+                    <Button label="Edit" type="confirm" onClick={() => onEdit(transaction)} />
+                    {(transaction.status === 'Initiated' || transaction.status === 'Processing') ?
+                        <Button label="Cancel" type="cancel" onClick={() => onCancel(transaction)} />
+                        : <Button type="invisible"/>
+                    }
+                </>
+            : <>
+                <Button type="invisible"/>
+                <Button type="invisible"/>
+            </>}
+        </td>
+    );
+
     return (
         <Card>
             {transactions.length > 0 ? (
@@ -26,14 +45,16 @@ function Table({transactions, onEdit, onCancel}) {
                             <td>{transaction.recipientSender}</td>
                             <td>{transaction.type}</td>
                             <td>{transaction.status}</td>
-                            <td className="transaction-actions">
-                                {(transaction.status === 'Initiated' || transaction.status === 'Processing') && (
-                                    <div className="buttons">
-                                        <Button label="Edit" type="confirm" onClick={() => onEdit(transaction)}/>
-                                        <Button label="Cancel" type="cancel" onClick={() => onCancel(transaction)}/>
-                                    </div>
-                                )}
-                            </td>
+                            {/*<td className="transaction-actions">*/}
+                            {/*    {(transaction.status === 'Initiated' || transaction.status === 'Processing') && (*/}
+                            {/*        <div className="buttons">*/}
+                            {/*            <Button label="View" type="confirm" onClick={() => onViewDetails(transaction)}/>*/}
+                            {/*            <Button label="Edit" type="confirm" onClick={() => onEdit(transaction)}/>*/}
+                            {/*            <Button label="Cancel" type="cancel" onClick={() => onCancel(transaction)}/>*/}
+                            {/*        </div>*/}
+                            {/*    )}*/}
+                            {/*</td>*/}
+                            {renderActions(transaction)}
                         </tr>
                     ))}
                     </tbody>
@@ -45,6 +66,10 @@ function Table({transactions, onEdit, onCancel}) {
             )}
         </Card>
     );
+
+
 }
+
+
 
 export default Table;

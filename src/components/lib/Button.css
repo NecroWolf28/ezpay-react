@@ -49,3 +49,13 @@
     display: flex;
     gap: 15px;
 }
+
+.transaction-button-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.button.invisible {
+    visibility: hidden;
+    cursor: none;
+}
