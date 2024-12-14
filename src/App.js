@@ -10,7 +10,7 @@ import Settings from './page/settings/Settings';
 import Login from "./page/auth/Login";
 import PrivateRoute from "./PrivateRoute";
 import Recover from "./page/auth/Recover";
-import Payment from "./page/payments/";
+import Payment from "./page/payments/Payment";
 import UPIPayments from "./page/payments/UPIPayments";
 import BankTransfer from "./page/payments/BankTransfer";
 
