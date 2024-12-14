@@ -1,14 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Edit from '../../components/transactions/Edit';
 import Table from '../../components/transactions/Table';
 import Filter from '../../components/transactions/Filter';
 import Dialog from '../../components/lib/Dialog';
 import './Transaction.css';
+import Card from "../../components/lib/Card";
+import Button from "../../components/lib/Button";
 
 function Transaction() {
     const [transactions, setTransactions] = useState([]);
     const [filteredTransactions, setFilteredTransactions] = useState([]);
     const [editTransaction, setEditTransaction] = useState(null);
+    const [viewTransaction, setViewTransaction] = useState(null);
     const [confirmationMessage, setConfirmationMessage] = useState(null);
     const [filters, setFilters] = useState({
         startDate: '',
@@ -35,12 +38,12 @@ function Transaction() {
     }, []);
 
     const handleFilterChange = (e) => {
-        const {name, value} = e.target;
-        setFilters((prevFilters) => ({...prevFilters, [name]: value}));
+        const { name, value } = e.target;
+        setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
     };
 
     const applyFilters = () => {
-        const {startDate, endDate, status, type} = filters;
+        const { startDate, endDate, status, type } = filters;
         const queryParams = new URLSearchParams();
 
         if (startDate) queryParams.append('startDate', startDate);
@@ -65,13 +68,13 @@ function Transaction() {
     };
 
     const handleEdit = (transaction) => {
-        setEditTransaction({...transaction, status: 'Initiated'});
+        setEditTransaction({ ...transaction, status: 'Initiated' });
     };
 
     const handleSubmitEdit = () => {
         fetch(`http://localhost:8081/api/transactions/${editTransaction.transactionId}`, {
             method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(editTransaction),
         })
             .then((response) => response.json())
@@ -94,10 +97,13 @@ function Transaction() {
 
     const handleCancel = (transaction) => {
         if (transaction.status === 'Initiated' || transaction.status === 'Processing') {
+            const updatedTransaction = { ...transaction, status: 'Canceled' };
             fetch(`http://localhost:8081/api/transactions/cancel/${transaction.transactionId}`, {
                 method: 'PUT',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({status: 'Canceled'}),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedTransaction),
             })
                 .then((response) => response.json())
                 .then((updatedTransaction) => {
@@ -106,13 +112,25 @@ function Transaction() {
                             t.transactionId === updatedTransaction.transactionId ? updatedTransaction : t
                         )
                     );
+                    setConfirmationMessage('Transaction canceled successfully!');
                 })
                 .catch((error) => console.error('Error canceling transaction:', error));
+        } else {
+            alert('Transaction cannot be canceled!');
         }
     };
 
+
     const handleDismissConfirmation = () => {
         setConfirmationMessage(null);
+    };
+
+    const handleViewDetails = (transaction) => {
+        setViewTransaction(transaction);
+    };
+
+    const handleCloseDetails = () => {
+        setViewTransaction(null);
     };
 
     return (
@@ -123,8 +141,10 @@ function Transaction() {
                     onDismiss={handleDismissConfirmation}
                 />
             )}
-            {!editTransaction && <h1 className="page-title">Transaction History</h1>}
-            {!editTransaction && (
+            {!editTransaction && !viewTransaction && (
+                <h1 className="page-title">Transaction History</h1>
+            )}
+            {!editTransaction && !viewTransaction && (
                 <Filter
                     filters={filters}
                     onFilterChange={handleFilterChange}
@@ -138,16 +158,33 @@ function Transaction() {
                 <Edit
                     transaction={editTransaction}
                     onChange={(e) =>
-                        setEditTransaction({...editTransaction, [e.target.name]: e.target.value})
+                        setEditTransaction({ ...editTransaction, [e.target.name]: e.target.value })
                     }
                     onSubmit={handleSubmitEdit}
                     onCancel={handleCancelEdit}
                 />
+            ) : viewTransaction ? (
+                <Card>
+                    <div>
+                        <h2>Transaction Details</h2>
+                        <p>ID: {viewTransaction.transactionId}</p>
+                        <p>Account ID: {viewTransaction.account.id}</p>
+                        <p>Transaction Date: {viewTransaction.transactionDate}</p>
+                        <p>Amount: ${viewTransaction.amount}</p>
+                        <p>Recipient: {viewTransaction.recipientSender}</p>
+                        <p>Description: {viewTransaction.description}</p>
+                        <p>Type: {viewTransaction.type}</p>
+                        <p>Status: {viewTransaction.status}</p>
+                        <br/>
+                        <Button onClick={handleCloseDetails} label="Close" type="confirm"/>
+                    </div>
+                </Card>
             ) : (
                 <Table
                     transactions={filteredTransactions}
                     onEdit={handleEdit}
                     onCancel={handleCancel}
+                    onViewDetails={handleViewDetails}
                 />
             )}
         </div>
