@@ -112,14 +112,12 @@ function Transaction() {
                             t.transactionId === updatedTransaction.transactionId ? updatedTransaction : t
                         )
                     );
-                    setConfirmationMessage('Transaction canceled successfully!');
                 })
                 .catch((error) => console.error('Error canceling transaction:', error));
         } else {
             alert('Transaction cannot be canceled!');
         }
     };
-
 
     const handleDismissConfirmation = () => {
         setConfirmationMessage(null);
@@ -135,14 +133,14 @@ function Transaction() {
 
     return (
         <div className="transactions-page">
+            {!editTransaction && !viewTransaction && (
+                <h1 className="page-title">Transaction History</h1>
+            )}
             {confirmationMessage && (
                 <Dialog
                     message={confirmationMessage}
                     onDismiss={handleDismissConfirmation}
                 />
-            )}
-            {!editTransaction && !viewTransaction && (
-                <h1 className="page-title">Transaction History</h1>
             )}
             {!editTransaction && !viewTransaction && (
                 <Filter
