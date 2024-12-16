@@ -37,7 +37,7 @@ const Header = () => {
                         </span>
                     <span className="nav-text">User</span>
                 </a>
-                <a href="/payment"
+                <a href="/payments"
                    className={`nav-item ${currentTab === '/payment' ? 'active-tab' : ''}`}>
                         <span className="nav-icon">
                             <img src={paymentIcon} alt="Payment"/>
