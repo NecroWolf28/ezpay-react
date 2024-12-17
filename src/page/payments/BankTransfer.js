@@ -1,5 +1,9 @@
-import {useRef} from "react";
+import React, {useRef} from "react";
 import {useEffect , useState } from "react";
+import Card from '../../components/lib/Card';
+import {Link} from 'react-router-dom';
+import Button from '../../components/lib/Button';
+import './payment.css';
 
 function BankTransfer() {
     let accountIdRef = useRef();
@@ -26,7 +30,7 @@ function BankTransfer() {
 
     const sendTransfer = async () => {
         let variables = {
-            "senderAccountId": accountIdRef.current.value,
+            "senderAccountId": accountId,
             "recipientAccountId": recipientRef.current.value,
             "amount": amountRef.current.value,
             "description": descRef.current.value
@@ -63,35 +67,39 @@ function BankTransfer() {
 
     return (
 
-        <div className="Container">
-            <div className="row">
-                <div className="col-md-6">
-                    <h2>Bank Transfer</h2>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-6">
-                    <input ref={accountIdRef} type="text" placeholder="Account ID" readOnly/>
-                </div>
-                <div className="col-md-6">
-                    <input ref={amountRef} type="text" placeholder="Enter amount"/>
-                </div>
-                <div className="col-md-6">
-                    <input ref={recipientRef} type="text" placeholder="Enter recipient id"/>
-                </div>
-                <div className="col-md-6">
-                    <input ref={descRef} type="text" placeholder="Enter Description"/>
-                </div>
-                <div className="row">
-                    <div className="col-md-6">
+        <div className="payment-page">
+            <h1 className="page-title">Bank Transfer</h1>
+            <Card>
+                <div className="form-container">
+                    <div className="form-group">
+                        <label className="text">Your Account No :</label>
+                        {/*<label htmlFor="accountId">{accountId}</label>*/}
+                        <input ref={accountIdRef} type="text" className="input" readOnly/>
+                    </div>
+                    <div className="form-group">
+                    <label className="text">Transfer Amount:</label>
+                        <input ref={amountRef} type="number" placeholder="Enter amount" className="input" min="1" required={true}/>
+                    </div>
+                    <div className="form-group">
+                        <label className="text">Recipient Account No :</label>
+                        <input ref={recipientRef} type="text" placeholder="Enter recipient account no."
+                               className="input" required />
+                    </div>
+                    <div className="form-group">
+                        <label className="text">Payment Purpose:</label>
+                        <textarea ref={descRef} type="text" placeholder="Enter Description" className="input" rows="5" required={true}></textarea>
+                    </div>
+                    <div className="row">
+                        <div className="form-group">
 
-                        <button onClick={() => sendTransfer()}>Make Transfer</button>
+                            <Button label="Make Transfer" onClick={() => sendTransfer()} type="confirm"/>
 
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Card>
         </div>
-    );
+);
 }
 
 export default BankTransfer;
