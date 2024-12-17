@@ -7,29 +7,59 @@ import {UserContext} from "../../contexts/UserContext";
 
 function BankTransfer() {
     const {user} = useContext(UserContext);
-    let accountIdRef = useRef();
     let amountRef = useRef();
     let recipientRef = useRef();
     let descRef = useRef();
-    const [accountId, setAccountId] = useState('');
     const navigate = useNavigate();
+    const [account, setAccount] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (user && user.account && user.account.id) {
-            const accountId = user.account.id; // Extract the account ID
-            console.log('Account ID:', accountId); // Debugging log to check if it's correct
-            setAccountId(accountId); // Assuming you want to store it in a state variable
-            accountIdRef.current.value = accountId; // Optionally assign it to the input field
-        } else {
-            console.error('Account ID not found in user data.');
-            alert('Account ID not found in user data.');
+        if (user) {
+            console.log(user)
+            fetch(`http://localhost:8081/api/account/get?id=${user.account.id}`)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch account information.');
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    setAccount(data);
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    setError(err.message);
+                    setLoading(false);
+                });
         }
     }, [user]);
+
+    if (!user || loading) {
+        return (
+            <div className="account-view">
+                <Card>
+                    <h2 className="section-title">Loading Account Information...</h2>
+                </Card>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="account-view">
+                <Card>
+                    <h2 className="section-title">Error: {error}</h2>
+                </Card>
+            </div>
+        );
+    }
 
 
     const sendTransfer = async () => {
         let variables = {
-            "senderAccountId": accountId,
+            "senderAccountId": account.id,
             "recipientAccountId": recipientRef.current.value,
             "amount": amountRef.current.value,
             "description": descRef.current.value
@@ -59,16 +89,36 @@ function BankTransfer() {
         navigate("/payment");
     }
 
+    if (!user || loading) {
+        return (
+            <div className="payment-page">
+                <Card>
+                    <h2 className="section-title">Loading Information...</h2>
+                </Card>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="payment-page">
+                <Card>
+                    <h2 className="section-title">Error: {error}</h2>
+                </Card>
+            </div>
+        );
+    }
+
     return (
         <div className="payment-page">
             <h1 className="page-title">Bank Transfer</h1>
             <Card>
                 <label className="text">Your Account No :</label>
-                <input ref={accountIdRef} type="text" className="input" readOnly/>
+                <input value={account.id} type="text" className="input" readOnly/>
 
                 <label className="text">Transfer Amount:</label>
-                <label className="hint">Current Balance: {user.account.balance.toFixed(2)}</label>
-                <label className="hint">Withdraw Limit: {user.account.withdrawLimit.toFixed(2)}</label>
+                <label className="hint">Current Balance: {account.balance.toFixed(2)}</label>
+                <label className="hint">Withdraw Limit: {account.withdrawLimit.toFixed(2)}</label>
                 <input
                     ref={amountRef}
                     type="number"
