@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import Card from '../../components/lib/Card';
 import {useNavigate} from 'react-router-dom';
 import Button from '../../components/lib/Button';
@@ -7,24 +7,58 @@ import {UserContext} from "../../contexts/UserContext";
 
 function UPIPayments() {
     const {user} = useContext(UserContext);
-    let accountRef = useRef();
     let amountRef = useRef();
     let recipientRef = useRef();
     let descRef = useRef();
     const navigate = useNavigate();
+    const [account, setAccount] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (user && user.account && user.account.id) {
-            accountRef.current.value = user.account.id;
-        } else {
-            console.error('Account ID not found in user data.');
-            alert('Account ID not found in user data.');
+        if (user) {
+            console.log(user)
+            fetch(`http://localhost:8081/api/account/get?id=${user.account.id}`)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch account information.');
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    setAccount(data);
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    setError(err.message);
+                    setLoading(false);
+                });
         }
     }, [user]);
 
+    if (!user || loading) {
+        return (
+            <div className="account-view">
+                <Card>
+                    <h2 className="section-title">Loading Account Information...</h2>
+                </Card>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="account-view">
+                <Card>
+                    <h2 className="section-title">Error: {error}</h2>
+                </Card>
+            </div>
+        );
+    }
+
     const sendPayment = async () => {
         let variables = {
-            "accountId": accountRef.current.value,
+            "accountId": account.id,
             "amount": amountRef.current.value,
             "recipientUPI": recipientRef.current.value,
             "description": descRef.current.value
@@ -55,16 +89,36 @@ function UPIPayments() {
         navigate("/payment");
     }
 
+    if (!user || loading) {
+        return (
+            <div className="payment-page">
+                <Card>
+                    <h2 className="section-title">Loading Information...</h2>
+                </Card>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="payment-page">
+                <Card>
+                    <h2 className="section-title">Error: {error}</h2>
+                </Card>
+            </div>
+        );
+    }
+
     return (
         <div className="payment-page">
             <h1 className="page-title">UPI Payments</h1>
             <Card>
                 <label className="text">Your UPI ID :</label>
-                <input ref={accountRef} type="text" placeholder="Account ID" className="input" readOnly/>
+                <input value={account.id} type="text" placeholder="Account ID" className="input" readOnly/>
 
                 <label className="text">Payment Amount :</label>
-                <label className="hint">Current Balance: {user.account.balance.toFixed(2)}</label>
-                <label className="hint">Withdraw Limit: {user.account.withdrawLimit.toFixed(2)}</label>
+                <label className="hint">Current Balance: {account.balance.toFixed(2)}</label>
+                <label className="hint">Withdraw Limit: {account.withdrawLimit.toFixed(2)}</label>
                 <input ref={amountRef} type="number" placeholder="Enter amount" className="input" min="1" required/>
 
                 <label className="text">Recipient's UPI ID:</label>
