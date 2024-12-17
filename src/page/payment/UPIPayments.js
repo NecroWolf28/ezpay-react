@@ -77,12 +77,15 @@ function UPIPayments() {
                 alert(`Error: ${error} `);
             } else {
                 const successData = await res.text();
-                alert(`Success: ${successData}`);
+                alert(`${successData}!\n\nPress OK to redirect back to the Payments page.`);
+                navigate("/payment");
             }
         } catch (error) {
             console.error("Error:", error);
             alert("an error has occurred!");
         }
+
+
     }
 
     const handleCancel = () => {
