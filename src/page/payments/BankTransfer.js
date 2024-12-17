@@ -1,7 +1,6 @@
 import React, {useRef} from "react";
 import {useEffect , useState } from "react";
 import Card from '../../components/lib/Card';
-import {Link} from 'react-router-dom';
 import Button from '../../components/lib/Button';
 import './payment.css';
 
@@ -11,6 +10,8 @@ function BankTransfer() {
     let recipientRef = useRef();
     let descRef = useRef();
     const [accountId, setAccountId] = useState('');
+    const [balance, setBalance] = useState('');
+    const [withdrawLimit, setWithdrawLimit] = useState('');
 
     useEffect(() => {
         // Retrieve user object from local storage
@@ -21,6 +22,10 @@ function BankTransfer() {
             console.log('Account ID:', accountId); // Debugging log to check if it's correct
             setAccountId(accountId); // Assuming you want to store it in a state variable
             accountIdRef.current.value = accountId; // Optionally assign it to the input field
+            const balance = user.account.balance;
+            const limit = user.account.withdrawLimit;
+            setBalance(balance);
+            setWithdrawLimit(limit);
         } else {
             console.error('Account ID not found in user data.');
             alert('Account ID not found in user data.');
@@ -48,7 +53,6 @@ function BankTransfer() {
                 const error = await res.text();
                 //console.error("ERROR:", error);
                 alert(`Error: ${error} `);
-                return;
             }
             else {
                 // For successful responses, read the success message
@@ -77,17 +81,28 @@ function BankTransfer() {
                         <input ref={accountIdRef} type="text" className="input" readOnly/>
                     </div>
                     <div className="form-group">
-                    <label className="text">Transfer Amount:</label>
-                        <input ref={amountRef} type="number" placeholder="Enter amount" className="input" min="1" required={true}/>
+                        <label className="text">Available Balance :</label>
+                        <input value={balance} type="text" placeholder="Balance" className="input" readOnly/>
+                    </div>
+                    <div className="form-group">
+                        <label className="text">Withdraw Limit :</label>
+                        <input value={withdrawLimit} type="text" placeholder="Withdraw Limit" className="input"
+                               readOnly/>
+                    </div>
+                    <div className="form-group">
+                        <label className="text">Transfer Amount:</label>
+                        <input ref={amountRef} type="number" placeholder="Enter amount" className="input" min="1"
+                               required={true}/>
                     </div>
                     <div className="form-group">
                         <label className="text">Recipient Account No :</label>
                         <input ref={recipientRef} type="text" placeholder="Enter recipient account no."
-                               className="input" required />
+                               className="input" required/>
                     </div>
                     <div className="form-group">
                         <label className="text">Payment Purpose:</label>
-                        <textarea ref={descRef} type="text" placeholder="Enter Description" className="input" rows="5" required={true}></textarea>
+                        <textarea ref={descRef} placeholder="Enter Description" className="input" rows="5"
+                                  required={true}></textarea>
                     </div>
                     <div className="row">
                         <div className="form-group">
@@ -99,7 +114,7 @@ function BankTransfer() {
                 </div>
             </Card>
         </div>
-);
+    );
 }
 
 export default BankTransfer;
