@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Edit from '../../components/transactions/Edit';
 import Table from '../../components/transactions/Table';
 import Filter from '../../components/transactions/Filter';
@@ -6,8 +6,10 @@ import Dialog from '../../components/lib/Dialog';
 import './Transaction.css';
 import Card from "../../components/lib/Card";
 import Button from "../../components/lib/Button";
+import {UserContext} from "../../contexts/UserContext";
 
 function Transaction() {
+    const {user} = useContext(UserContext);
     const [transactions, setTransactions] = useState([]);
     const [filteredTransactions, setFilteredTransactions] = useState([]);
     const [editTransaction, setEditTransaction] = useState(null);
@@ -23,8 +25,23 @@ function Transaction() {
     const [uniqueStatuses, setUniqueStatuses] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8081/api/transactions/list')
-            .then((response) => response.json())
+        const accountId = user?.account.id;
+
+        if (!accountId) {
+            console.error("Account ID is not available yet.");
+            return;
+        }
+
+        const queryParams = new URLSearchParams();
+        queryParams.append('account_id', accountId);
+
+        fetch(`http://localhost:8081/api/transactions/filter?${queryParams.toString()}`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch transactions");
+                }
+                return response.json();
+            })
             .then((data) => {
                 setTransactions(data);
                 setFilteredTransactions(data);
@@ -34,8 +51,9 @@ function Transaction() {
                 setUniqueTypes(types);
                 setUniqueStatuses(statuses);
             })
-            .catch((error) => console.error('Error fetching transactions:', error));
-    }, []);
+            .catch((error) => console.error("Error fetching filtered transactions:", error));
+    }, [user]);
+
 
     const handleFilterChange = (e) => {
         const { name, value } = e.target;
@@ -50,6 +68,7 @@ function Transaction() {
         if (endDate) queryParams.append('endDate', endDate);
         if (status) queryParams.append('status', status);
         if (type) queryParams.append('type', type);
+        queryParams.append('account_id', user.account.id);
 
         fetch(`http://localhost:8081/api/transactions/filter?${queryParams.toString()}`)
             .then((response) => response.json())
@@ -112,14 +131,12 @@ function Transaction() {
                             t.transactionId === updatedTransaction.transactionId ? updatedTransaction : t
                         )
                     );
-                    setConfirmationMessage('Transaction canceled successfully!');
                 })
                 .catch((error) => console.error('Error canceling transaction:', error));
         } else {
             alert('Transaction cannot be canceled!');
         }
     };
-
 
     const handleDismissConfirmation = () => {
         setConfirmationMessage(null);
@@ -135,14 +152,14 @@ function Transaction() {
 
     return (
         <div className="transactions-page">
+            {!editTransaction && !viewTransaction && (
+                <h1 className="page-title">Transaction History</h1>
+            )}
             {confirmationMessage && (
                 <Dialog
                     message={confirmationMessage}
                     onDismiss={handleDismissConfirmation}
                 />
-            )}
-            {!editTransaction && !viewTransaction && (
-                <h1 className="page-title">Transaction History</h1>
             )}
             {!editTransaction && !viewTransaction && (
                 <Filter
