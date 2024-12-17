@@ -58,26 +58,3 @@ body {
     margin-bottom: 20px;
     text-align: center;
 }
-
-/*.text {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    text-align: left;  /*Align the label text to the left } */
-
-
-.form-container {
-    display: inline-block;
-    flex-direction: column;
-    /*background-color: var(--background-color);*/
-    color: var(--text-color);
-    width: 100%;
-    text-align: center;
-
-}
-
-.form-group{
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}

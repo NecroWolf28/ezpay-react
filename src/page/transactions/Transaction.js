@@ -4,9 +4,8 @@ import Table from '../../components/transactions/Table';
 import Filter from '../../components/transactions/Filter';
 import Dialog from '../../components/lib/Dialog';
 import './Transaction.css';
-import Card from "../../components/lib/Card";
-import Button from "../../components/lib/Button";
 import {UserContext} from "../../contexts/UserContext";
+import View from "../../components/transactions/View";
 
 function Transaction() {
     const {user} = useContext(UserContext);
@@ -56,12 +55,12 @@ function Transaction() {
 
 
     const handleFilterChange = (e) => {
-        const { name, value } = e.target;
-        setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
+        const {name, value} = e.target;
+        setFilters((prevFilters) => ({...prevFilters, [name]: value}));
     };
 
     const applyFilters = () => {
-        const { startDate, endDate, status, type } = filters;
+        const {startDate, endDate, status, type} = filters;
         const queryParams = new URLSearchParams();
 
         if (startDate) queryParams.append('startDate', startDate);
@@ -87,13 +86,13 @@ function Transaction() {
     };
 
     const handleEdit = (transaction) => {
-        setEditTransaction({ ...transaction, status: 'Initiated' });
+        setEditTransaction({...transaction, status: 'Initiated'});
     };
 
     const handleSubmitEdit = () => {
         fetch(`http://localhost:8081/api/transactions/${editTransaction.transactionId}`, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(editTransaction),
         })
             .then((response) => response.json())
@@ -116,7 +115,7 @@ function Transaction() {
 
     const handleCancel = (transaction) => {
         if (transaction.status === 'Initiated' || transaction.status === 'Processing') {
-            const updatedTransaction = { ...transaction, status: 'Canceled' };
+            const updatedTransaction = {...transaction, status: 'Canceled'};
             fetch(`http://localhost:8081/api/transactions/cancel/${transaction.transactionId}`, {
                 method: 'PUT',
                 headers: {
@@ -175,27 +174,13 @@ function Transaction() {
                 <Edit
                     transaction={editTransaction}
                     onChange={(e) =>
-                        setEditTransaction({ ...editTransaction, [e.target.name]: e.target.value })
+                        setEditTransaction({...editTransaction, [e.target.name]: e.target.value})
                     }
                     onSubmit={handleSubmitEdit}
                     onCancel={handleCancelEdit}
                 />
             ) : viewTransaction ? (
-                <Card>
-                    <div>
-                        <h2>Transaction Details</h2>
-                        <p>ID: {viewTransaction.transactionId}</p>
-                        <p>Account ID: {viewTransaction.account.id}</p>
-                        <p>Transaction Date: {viewTransaction.transactionDate}</p>
-                        <p>Amount: ${viewTransaction.amount}</p>
-                        <p>Recipient: {viewTransaction.recipientSender}</p>
-                        <p>Description: {viewTransaction.description}</p>
-                        <p>Type: {viewTransaction.type}</p>
-                        <p>Status: {viewTransaction.status}</p>
-                        <br/>
-                        <Button onClick={handleCloseDetails} label="Close" type="confirm"/>
-                    </div>
-                </Card>
+                <View transaction={viewTransaction} onCancel={handleCloseDetails}/>
             ) : (
                 <Table
                     transactions={filteredTransactions}

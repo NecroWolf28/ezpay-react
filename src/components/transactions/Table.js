@@ -6,19 +6,20 @@ import Card from "../lib/Card";
 function Table({transactions, onViewDetails, onEdit, onCancel}) {
 
     const renderActions = (transaction) => (
-        <td className="transaction-button-actions">
-            <Button label="View" type="confirm" onClick={() => onViewDetails(transaction)} />
-                    {(transaction.status === 'Initiated' || transaction.status === 'Processing') ?
-                        <>
-                        <Button label="Edit" type="confirm" onClick={() => onEdit(transaction)} />
-                        <Button label="Cancel" type="cancel" onClick={() => onCancel(transaction)} />
-                            </>
-                        :
-                        <>
-                            <Button type="invisible"/>
-                            <Button type="invisible"/>
-                            </>
-                    }
+        <td>
+            {(transaction.status === 'Initiated' || transaction.status === 'Processing') ?
+                <div className="buttons">
+                    <Button label="View" type="confirm" onClick={() => onViewDetails(transaction)}/>
+                    <Button label="Edit" type="confirm" onClick={() => onEdit(transaction)}/>
+                    <Button label="Cancel" type="cancel" onClick={() => onCancel(transaction)}/>
+                </div>
+                :
+                <div className="buttons">
+                    <Button label="View" type="confirm" onClick={() => onViewDetails(transaction)}/>
+                    <Button type="invisible"/>
+                    <Button type="invisible"/>
+                </div>
+            }
         </td>
     );
 
@@ -59,7 +60,6 @@ function Table({transactions, onViewDetails, onEdit, onCancel}) {
 
 
 }
-
 
 
 export default Table;

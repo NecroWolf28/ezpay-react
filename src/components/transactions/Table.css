@@ -20,11 +20,6 @@
     text-align: left;
 }
 
-.transaction-actions td {
-    justify-content: center;
-    min-height: 30px;
-}
-
 .no-transactions-message {
     text-align: center;
     font-weight: bold;

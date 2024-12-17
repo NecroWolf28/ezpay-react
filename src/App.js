@@ -10,9 +10,9 @@ import Settings from './page/settings/Settings';
 import Login from "./page/auth/Login";
 import PrivateRoute from "./PrivateRoute";
 import Recover from "./page/auth/Recover";
-import Payment from "./page/payments/Payment";
-import UPIPayments from "./page/payments/UPIPayments";
-import BankTransfer from "./page/payments/BankTransfer";
+import Payment from "./page/payment/Payment";
+import UPIPayments from "./page/payment/UPIPayments";
+import BankTransfer from "./page/payment/BankTransfer";
 
 function App() {
     const [darkMode, setDarkMode] = useState(
@@ -52,13 +52,13 @@ function App() {
                         <Route path="/settings" element={<PrivateRoute>
                             <Settings toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}
                         />
-                        <Route path="/payments" element={<PrivateRoute>
+                        <Route path="/payment" element={<PrivateRoute>
                             <Payment toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}
                         />
-                        <Route path="/payments/upi" element={<PrivateRoute>
+                        <Route path="/payment/upi" element={<PrivateRoute>
                             <UPIPayments toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}
                         />
-                        <Route path="/payments/bank-transfer" element={<PrivateRoute>
+                        <Route path="/payment/transfer" element={<PrivateRoute>
                             <BankTransfer toggleDarkMode={toggleDarkMode} darkMode={darkMode}/></PrivateRoute>}
                         />
                         <Route path="*" element={<Navigate to="/user" replace/>}/>
