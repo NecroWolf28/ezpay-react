@@ -71,23 +71,28 @@ function UPIPayments() {
         <div className="payment-page">
             <h1 className="page-title">UPI Payments</h1>
             <Card>
-            <div className="row">
-                <div className="col-md-6">
-                    <input ref={accountRef} type="text" placeholder="Account ID" readOnly/>
+            <div className="form-container">
+                <div className="form-group">
+                    <label className="text">Your UPI ID :</label>
+                    <input ref={accountRef} type="text" placeholder="Account ID" className="input" readOnly/>
                 </div>
-                <div className="col-md-6">
-                    <input ref={amountRef} type="text" placeholder="Enter amount"/>
+                <div className="form-group">
+                    <label className="text">Payment Amount :</label>
+                    <input ref={amountRef} type="number" placeholder="Enter amount" className="input" min="1" required={true}/>
                 </div>
-                <div className="col-md-6">
-                    <input ref={recipientRef} type="text" placeholder="Enter recipient id"/>
+                <div className="form-group">
+                    <label className="text">Recipient's UPI ID:</label>
+                    <input ref={recipientRef} type="text" placeholder="Enter UPI ID" className="input" required={true}/>
                 </div>
-                <div className="col-md-6">
-                    <input ref={descRef} type="text" placeholder="Enter Description"/>
+                <div className="form-group">
+                    <label className="text">Description :</label>
+                    <input ref={descRef} type="text" placeholder="Enter Description" className="input"/>
                 </div>
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="form-group">
 
-                        <button onClick={() => sendPayment()}>ValidatePayment</button>
+                        {/*<button onClick={() => sendPayment()}>ValidatePayment</button>*/}
+                        <Button label="Send Payment" onClick={() => sendPayment()} type="confirm"/>
 
                     </div>
                 </div>
